@@ -38,6 +38,26 @@ const ERROR = {
   CantNotSendVerifyEmail: 120,
   CantNotResetPassword: 121,
   CantNotUpdatePassword: 122,
+  // Product
+  ProductIsRequired: 131,
+  // Categories 141
+  NameCategorieIsRequired: 141,
+  SlugCategorieIsRequired: 142,
 };
 
-export { LIMIT, HttpMethod, ERROR, RESPONSE };
+const TYPE_ACCOUNT = {
+  ADMIN: 0,
+  CUSTOMER: 1,
+};
+
+const STATUS_ACCOUNT = {
+  ACTIVE: 0,
+  BLOCK: 1,
+};
+
+const STATUS_ORDER = {
+  PENDDING: 0,
+  APPROVED: 1,
+};
+
+export { LIMIT, HttpMethod, ERROR, RESPONSE, TYPE_ACCOUNT, STATUS_ACCOUNT, STATUS_ORDER };

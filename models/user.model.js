@@ -1,11 +1,17 @@
 import * as BaseModel from './base.model';
-import { ERROR } from '../common/constants';
+import { ERROR, STATUS_ACCOUNT, TYPE_ACCOUNT } from '../common/constants';
 
 // model name
 const name = 'users';
 
 const model = {
-  name: {
+  firstName: {
+    type: String,
+    required: [true, ERROR.UserIsRequired.toString()],
+    unique: true,
+    trim: true,
+  },
+  lastName: {
     type: String,
     required: [true, ERROR.UserIsRequired.toString()],
     unique: true,
@@ -25,6 +31,16 @@ const model = {
     type: String,
     required: [true, ERROR.PasswordIsRequired.toString()],
     select: false,
+  },
+  type: {
+    type: Number,
+    enum: TYPE_ACCOUNT,
+    default: TYPE_ACCOUNT.CUSTOMER,
+  },
+  status: {
+    type: Number,
+    enum: STATUS_ACCOUNT,
+    default: STATUS_ACCOUNT.ACTIVE,
   },
   verify_email: {
     type: Number,
