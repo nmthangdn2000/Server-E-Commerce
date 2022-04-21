@@ -7,13 +7,13 @@ const name = 'users';
 const model = {
   firstName: {
     type: String,
-    required: [true, ERROR.UserIsRequired.toString()],
+    required: [true, ERROR.FirstNameIsRequired.toString()],
     unique: true,
     trim: true,
   },
   lastName: {
     type: String,
-    required: [true, ERROR.UserIsRequired.toString()],
+    required: [true, ERROR.LastNameIsRequired.toString()],
     unique: true,
     trim: true,
   },
@@ -48,6 +48,6 @@ const model = {
   },
 };
 
-const index = { name: 'text', phone: 'text', district: 'text', province: 'text' };
+const index = { firstName: 'text', lastName: 'text', email: 'text' };
 
 export default BaseModel.createModel({ name, model, index });

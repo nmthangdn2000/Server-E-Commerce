@@ -1,6 +1,7 @@
 'use strict';
 
 const LIMIT = 10;
+const PAGE = 1;
 
 const HttpMethod = {
   GET: 'GET',
@@ -38,6 +39,8 @@ const ERROR = {
   CantNotSendVerifyEmail: 120,
   CantNotResetPassword: 121,
   CantNotUpdatePassword: 122,
+  FirstNameIsRequired: 122,
+  LastNameIsRequired: 122,
   // Product
   ProductIsRequired: 131,
   // Categories 141
@@ -60,4 +63,4 @@ const STATUS_ORDER = {
   APPROVED: 1,
 };
 
-export { LIMIT, HttpMethod, ERROR, RESPONSE, TYPE_ACCOUNT, STATUS_ACCOUNT, STATUS_ORDER };
+export { LIMIT, PAGE, HttpMethod, ERROR, RESPONSE, TYPE_ACCOUNT, STATUS_ACCOUNT, STATUS_ORDER };

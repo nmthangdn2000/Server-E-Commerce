@@ -12,8 +12,8 @@ const login = async (email, password) => {
   };
   const user = await User.findOne(query).select('-password').lean();
   if (!user) throw new Error(ERROR.AccountDoesNotExist);
-  const { _id, name, ...data } = user;
-  const token = endCodeToken({ _id, name });
+  const { _id, firstName, lastName, ...data } = user;
+  const token = endCodeToken({ _id, firstName, lastName });
   return { ...user, token };
 };
 
@@ -26,14 +26,15 @@ const register = async (data) => {
   });
   const user = await newUser.save();
   if (!user) throw new Error(ERROR.CanNotCreateUser);
-  const token = PasswordHash.sha512(tokenVerifyEmail(data.name, data.email, user.updatedAt));
-  mailer.sendMail(data.email, subject, htmlVerifyEmail(data.name, data.email, token));
+  const { firstName, lastName, email } = data;
+  const token = PasswordHash.sha512(tokenVerifyEmail(`${firstName} ${lastName}`, email, user.updatedAt));
+  mailer.sendMail(email, subject, htmlVerifyEmail(`${firstName} ${lastName}`, email, token));
 };
 
 const verifyEmail = async (email, tokenUrl) => {
   const user = await User.findOne({ email }).lean();
-  const { _id, name, updatedAt } = user;
-  const token = PasswordHash.sha512(tokenVerifyEmail(name, email, updatedAt));
+  const { _id, firstName, lastName, updatedAt } = user;
+  const token = PasswordHash.sha512(tokenVerifyEmail(`${firstName} ${lastName}`, email, updatedAt));
   if (tokenUrl != token) throw new Error(ERROR.CantNotVerifyEmail);
   const update = await User.updateOne({ _id }, { verify_email: new Date(), updatedAt: new Date() });
   if (update.modifiedCount < 1) throw new Error(ERROR.CantNotVerifyEmail);
@@ -43,24 +44,24 @@ const sendVerifyEmail = async (email) => {
   if (!email) throw Error(ERROR.CantNotSendVerifyEmail);
   const user = await User.findOne({ email }).lean();
   if (!user) throw Error(ERROR.CantNotSendVerifyEmail);
-  const { name, updatedAt } = user;
-  const token = PasswordHash.sha512(tokenVerifyEmail(name, email, updatedAt));
-  mailer.sendMail(email, subject, htmlVerifyEmail(name, email, token));
+  const { firstName, lastName, updatedAt } = user;
+  const token = PasswordHash.sha512(tokenVerifyEmail(`${firstName} ${lastName}`, email, updatedAt));
+  mailer.sendMail(email, subject, htmlVerifyEmail(`${firstName} ${lastName}`, email, token));
 };
 
 const forgotPassword = async (email) => {
   if (!email) throw Error(ERROR.CantNotResetPassword);
   const user = await User.findOne({ email }).lean();
   if (!user) throw Error(ERROR.CantNotResetPassword);
-  const { name, updatedAt } = user;
-  const token = PasswordHash.sha512(tokenResetPassword(name, email, updatedAt));
-  mailer.sendMail(email, subject, htmlResetPassword(name, email, token));
+  const { firstName, lastName, updatedAt } = user;
+  const token = PasswordHash.sha512(tokenResetPassword(`${firstName} ${lastName}`, email, updatedAt));
+  mailer.sendMail(email, subject, htmlResetPassword(`${firstName} ${lastName}`, email, token));
 };
 
 const resetPassword = async (email, tokenUrl) => {
   const user = await User.findOne({ email }).lean();
-  const { name, updatedAt } = user;
-  const token = PasswordHash.sha512(tokenResetPassword(name, email, updatedAt));
+  const { firstName, lastName, updatedAt } = user;
+  const token = PasswordHash.sha512(tokenResetPassword(`${firstName} ${lastName}`, email, updatedAt));
   if (tokenUrl != token) throw new Error(ERROR.CantNotResetPassword);
 };
 
@@ -70,8 +71,8 @@ const changePassword = async (email, password, tokenUrl) => {
   const user = await User.findOne({ email }).lean();
   if (!user) throw Error(ERROR.CantNotUpdatePassword);
 
-  const { name, updatedAt } = user;
-  const token = PasswordHash.sha512(tokenResetPassword(name, email, updatedAt));
+  const { firstName, lastName, updatedAt } = user;
+  const token = PasswordHash.sha512(tokenResetPassword(`${firstName} ${lastName}`, email, updatedAt));
   if (tokenUrl != token) throw new Error(ERROR.CantNotUpdatePassword);
 
   password = PasswordHash.sha512(password);
