@@ -9,6 +9,8 @@ const model = {
   name: {
     type: String,
     require: [true, ERROR.NameCategorieIsRequired.toString()],
+    unique: true,
+    trim: true,
   },
   slug: {
     type: String,

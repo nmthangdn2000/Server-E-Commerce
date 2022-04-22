@@ -32,6 +32,7 @@ const createSchema = (name, model, index) => {
 
 const validator = (schema) => {
   schema.post('save', (error, doc, next) => {
+    console.log(error);
     if (error.name === 'ValidationError') {
       const message = Object.values(error.errors).map((val) => val.message)[0];
       const kind = Object.values(error.errors).map((val) => val.kind)[0];
@@ -44,7 +45,7 @@ const validator = (schema) => {
         key = nameKey;
       }
       const code = errorMessageMongoose.getErrorMessage(key);
-      return next(new Error(code));
+      return next(new Error(error.message));
     } else {
       return next();
     }

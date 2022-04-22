@@ -26,7 +26,7 @@ const filter = async (q = '', page = PAGE, limit = LIMIT, sort) => {
   };
 };
 
-const getOne = async (id) => {
+const getById = async (id) => {
   const user = await UserModel.findById(id);
   if (!user) throw new Error(ERROR.CanNotGetUser);
   return user;
@@ -45,4 +45,4 @@ const updateById = async (id, data) => {
   if (update.modifiedCount < 1) throw new Error(ERROR.CanNotUpdateUser);
 };
 
-export { filter, getOne, deleteById, updateById };
+export { filter, getById, deleteById, updateById };

@@ -43,9 +43,17 @@ const ERROR = {
   LastNameIsRequired: 122,
   // Product
   ProductIsRequired: 131,
+  CanNotGetProduct: 132,
+  CanNotCreateProduct: 133,
+  CanNotDeleteProduct: 134,
+  CanNotUpdateProduct: 135,
   // Categories 141
   NameCategorieIsRequired: 141,
   SlugCategorieIsRequired: 142,
+  CanNotGetCategory: 143,
+  CanNotCreateCategory: 144,
+  CanNotDeleteCategory: 145,
+  CanNotUpdateCategory: 146,
 };
 
 const TYPE_ACCOUNT = {

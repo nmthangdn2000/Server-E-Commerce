@@ -13,9 +13,9 @@ const filter = async (req, res) => {
   }
 };
 
-const getOne = async (req, res) => {
+const getById = async (req, res) => {
   try {
-    const data = await userService.getOne(req.params.id);
+    const data = await userService.getById(req.params.id);
     responseSuccessWithData(res, data);
   } catch (error) {
     console.log(error);
@@ -43,4 +43,4 @@ const updateById = async (req, res) => {
   }
 };
 
-export { filter, getOne, deleteById, updateById };
+export { filter, getById, deleteById, updateById };
