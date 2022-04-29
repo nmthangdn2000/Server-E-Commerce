@@ -54,6 +54,15 @@ const ERROR = {
   CanNotCreateCategory: 144,
   CanNotDeleteCategory: 145,
   CanNotUpdateCategory: 146,
+  // Products 151
+  NameProductIsRequired: 151,
+  PriceProductIsRequired: 152,
+  SaleProductIsRequired: 153,
+  CanNotGetProduct: 154,
+  CanNotCreateProduct: 155,
+  CanNotDeleteProduct: 156,
+  CanNotUpdateProduct: 157,
+  CategorieIsRequired: 158,
 };
 
 const TYPE_ACCOUNT = {

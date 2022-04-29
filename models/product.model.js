@@ -9,7 +9,7 @@ const name = 'products';
 const model = {
   name: {
     type: String,
-    require: [true, ERROR.NameCategorieIsRequired.toString()],
+    require: [true, ERROR.NameProductIsRequired.toString()],
   },
   images: [String],
   star: {
@@ -18,17 +18,18 @@ const model = {
   },
   price: {
     type: Number,
-    require: [true, ERROR.NameCategorieIsRequired.toString()],
+    require: [true, ERROR.PriceProductIsRequired.toString()],
   },
   sale: {
     type: Number,
-    require: [true, ERROR.NameCategorieIsRequired.toString()],
+    require: [true, ERROR.SaleProductIsRequired.toString()],
   },
   categories: [
     {
+      // _id: false,
       type: Schema.Types.ObjectId,
       ref: 'categories',
-      required: [true, ERROR.UserIsRequired.toString()],
+      required: [true, ERROR.CategorieIsRequired.toString()],
     },
   ],
   description: String,

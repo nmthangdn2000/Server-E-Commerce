@@ -7,11 +7,15 @@ const pagination = (total, limit) => {
 const deleteFile = (filename, fileId) => {
   //   if (fileId) driveHelper.deleteFile(fileId);
   if (filename && filename != 'avata-default.png') {
-    fs.unlink(`./public/file/${filename}`, (err) => {
+    fs.unlink(`./public/images/${filename}`, (err) => {
       if (err) console.log(err);
       console.log(`successfully deleted ${filename}`);
     });
   }
 };
 
-export { pagination, deleteFile };
+const listStringImage = (files) => {
+  return files.map((file) => file.filename);
+};
+
+export { pagination, deleteFile, listStringImage };
