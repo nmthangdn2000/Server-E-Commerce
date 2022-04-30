@@ -43,7 +43,7 @@ const deleteById = async (req, res) => {
 
 const updateById = async (req, res) => {
   try {
-    await productService.updateById(req.params.id, req.body.name);
+    await productService.updateById(req.params.id, req.body, req.files);
     responseSuccess(res);
   } catch (error) {
     console.log(error);

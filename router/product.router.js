@@ -13,7 +13,12 @@ const initRoute = () => {
     middelware: [uploadDiskStorage.array('images', 10)],
   });
   route({ method: HttpMethod.DELETE, url: '/:id', action: productController.deleteById });
-  route({ method: HttpMethod.PUT, url: '/:id', action: productController.updateById });
+  route({
+    method: HttpMethod.PUT,
+    url: '/:id',
+    action: productController.updateById,
+    middelware: [uploadDiskStorage.array('images', 10)],
+  });
 };
 
 export default addRoot(initRoute);
