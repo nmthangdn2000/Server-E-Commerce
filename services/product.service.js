@@ -15,6 +15,7 @@ const getAll = async ({ q = '', page = PAGE, limit = LIMIT, sort }) => {
   const count = ProductModel.find(query).countDocuments();
   // chưa làm sort
   const getProducts = ProductModel.find(query)
+    .populate('categories', 'name slug')
     .skip(page * limit - limit)
     .limit(Number(limit));
   const [total, products] = await Promise.all([count, getProducts]);
