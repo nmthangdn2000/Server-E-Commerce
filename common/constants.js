@@ -63,6 +63,11 @@ const ERROR = {
   CanNotDeleteProduct: 156,
   CanNotUpdateProduct: 157,
   CategorieIsRequired: 158,
+  // Carts 151
+  CanNotGetCart: 161,
+  CanNotCreateCart: 162,
+  CanNotDeleteCart: 163,
+  CanNotUpdateCart: 164,
 };
 
 const TYPE_ACCOUNT = {
