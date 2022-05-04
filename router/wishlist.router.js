@@ -4,7 +4,7 @@ import * as wishlistController from '../controllers/wishlist.controller';
 
 const initRoute = () => {
   // route({ method: HttpMethod.GET, action: wishlistController.getAll });
-  route({ method: HttpMethod.GET, url: '/:id', action: wishlistController.getByIdUser });
+  route({ method: HttpMethod.GET, action: wishlistController.getByUser });
   route({ method: HttpMethod.POST, url: '', action: wishlistController.create });
   route({ method: HttpMethod.DELETE, url: '/:id', action: wishlistController.deleteById });
   route({ method: HttpMethod.PUT, url: '/:id', action: wishlistController.updateById });

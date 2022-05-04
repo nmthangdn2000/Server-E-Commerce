@@ -7,7 +7,7 @@ import WishlistModel from '../models/wishlist.model';
 //   return wishlist;
 // };
 
-const getByIdUser = async (user) => {
+const getByUser = async (user) => {
   const wishlist = await WishlistModel.find({ user }).populate({
     path: 'product',
     model: 'products',
@@ -23,10 +23,11 @@ const getByIdUser = async (user) => {
   return wishlist;
 };
 
-const create = async (data) => {
-  if (!data.product || !data.user) throw new Error(ERROR.CanNotCreateWishlist);
+const create = async (data, user) => {
+  if (!data.product || !user) throw new Error(ERROR.CanNotCreateWishlist);
   const newWishlist = new WishlistModel({
     ...data,
+    user,
   });
   const wishlist = await newWishlist.save();
   if (!wishlist) throw new Error(ERROR.CanNotCreateWishlist);
@@ -44,4 +45,4 @@ const updateById = async (id, data) => {
   if (update.modifiedCount < 1) throw new Error(ERROR.CanNotUpdateWishlist);
 };
 
-export { getByIdUser, create, deleteById, updateById };
+export { getByUser, create, deleteById, updateById };

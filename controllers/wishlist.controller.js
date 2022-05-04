@@ -11,9 +11,9 @@ import { responseError, responseSuccess, responseSuccessWithData } from './base.
 //   }
 // };
 
-const getByIdUser = async (req, res) => {
+const getByUser = async (req, res) => {
   try {
-    const data = await wishlistService.getByIdUser(req.params.id);
+    const data = await wishlistService.getByUser(req.user._id);
     responseSuccessWithData(res, data);
   } catch (error) {
     console.log(error);
@@ -23,7 +23,7 @@ const getByIdUser = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    await wishlistService.create(req.body);
+    await wishlistService.create(req.body, req.user._id);
     responseSuccess(res);
   } catch (error) {
     console.log(error);
@@ -51,4 +51,4 @@ const updateById = async (req, res) => {
   }
 };
 
-export { getByIdUser, create, deleteById, updateById };
+export { getByUser, create, deleteById, updateById };

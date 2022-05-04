@@ -4,7 +4,7 @@ import * as cartController from '../controllers/cart.controller';
 
 const initRoute = () => {
   // route({ method: HttpMethod.GET, action: cartController.getAll });
-  route({ method: HttpMethod.GET, url: '/:id', action: cartController.getByIdUser });
+  route({ method: HttpMethod.GET, action: cartController.getByUser });
   route({ method: HttpMethod.POST, url: '', action: cartController.create });
   route({ method: HttpMethod.DELETE, url: '/:id', action: cartController.deleteById });
   route({ method: HttpMethod.PUT, url: '/:id', action: cartController.updateById });
