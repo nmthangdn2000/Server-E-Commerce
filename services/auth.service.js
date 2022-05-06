@@ -93,10 +93,9 @@ const endCodeToken = (data) => {
 
 const htmlVerifyEmail = (name, email, token) => `
 <p>Xin chào <strong>${name}</strong></p>
-<p>Cảm ơn bạn đã đăng ký tài khoảng tại website khoi.com của chúng tôi</p>
+<p>Thank you for registering an account on our website vicodin.com</p>
 <p>
-  Để có trải nghiệm tốt bạn vui lòng click vào button dưới đây để xác thực email của
-  bạn
+  To have a good experience, please click the button below to verify your email:
 </p>
 <a style="
     background-color: #4caf50;
@@ -117,8 +116,8 @@ const htmlVerifyEmail = (name, email, token) => `
 `;
 
 const htmlResetPassword = (name, email, token) => `
-<p>Xin chào <strong>${name}</strong></p>
-<p>Để đặt lại mật khẩu của bạn tại website khoi.com vui lòng click vào button dưới đây:</p>
+<p>Hello <strong>${name}</strong></p>
+<p>To reset your password at vicodin.com website please click the button below:</p>
 <a style="
     background-color: #4caf50;
     border: none;
@@ -130,7 +129,7 @@ const htmlResetPassword = (name, email, token) => `
     font-size: 16px;
     border-radius: 50px;
   " href="http://localhost:3000/api/password/reset/${email}?token=${token}">
-  Đặt lại mật khẩu
+  Reset Password
 </a>
 <div style="margin-top: 20px">
   <strong style="font-size: 50px"> Wellcome to khoi.com </strong>
