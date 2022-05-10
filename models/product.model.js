@@ -11,6 +11,10 @@ const model = {
     type: String,
     require: [true, ERROR.NameProductIsRequired.toString()],
   },
+  slug: {
+    type: String,
+    require: [true, ERROR.NameProductIsRequired.toString()],
+  },
   images: [String],
   star: {
     type: Number,
@@ -24,14 +28,14 @@ const model = {
     type: Number,
     require: [true, ERROR.SaleProductIsRequired.toString()],
   },
-  categories: [
-    {
-      // _id: false,
-      type: Schema.Types.ObjectId,
-      ref: 'categories',
-      required: [true, ERROR.CategorieIsRequired.toString()],
-    },
-  ],
+  categories: [Number],
+  // {
+  //   // _id: false,
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'categories',
+  //   required: [true, ERROR.CategorieIsRequired.toString()],
+  // },
+
   description: String,
 };
 
