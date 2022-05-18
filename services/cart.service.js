@@ -19,7 +19,7 @@ const create = async (data, user) => {
   if (!data.product || !user) throw new Error(ERROR.CanNotCreateCart);
   const checkProduct = await CartModel.findOne({ product: data.product, user }).select('_id amount');
   if (checkProduct) {
-    return await updateById(checkProduct._id, { amount: checkProduct.amount + 1 });
+    return await updateById(checkProduct._id, { amount: checkProduct.amount + Number(data.amount || 1) });
   }
   const newCart = new CartModel({
     ...data,
