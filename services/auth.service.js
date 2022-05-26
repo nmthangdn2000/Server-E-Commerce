@@ -92,7 +92,7 @@ const endCodeToken = (data) => {
 };
 
 const htmlVerifyEmail = (name, email, token) => `
-<p>Xin chào <strong>${name}</strong></p>
+<p>Hello <strong>${name}</strong></p>
 <p>Thank you for registering an account on our website vicodin.com</p>
 <p>
   To have a good experience, please click the button below to verify your email:
@@ -107,11 +107,11 @@ const htmlVerifyEmail = (name, email, token) => `
     display: inline-block;
     font-size: 16px;
     border-radius: 50px;
-  " href="http://localhost:3000/api/verify/${email}?token=${token}">
-  Xác thực email
+  " href="http://localhost:3000/verify-email">
+  Verify email
 </a>
 <div style="margin-top: 20px">
-  <strong style="font-size: 50px"> Wellcome to khoi.com </strong>
+  <strong style="font-size: 50px"> Wellcome to Vicodin </strong>
 </div>
 `;
 
@@ -128,10 +128,10 @@ const htmlResetPassword = (name, email, token) => `
     display: inline-block;
     font-size: 16px;
     border-radius: 50px;
-  " href="http://localhost:3000/api/password/reset/${email}?token=${token}">
+  " href="http://localhost:3000/reset-password">
   Reset Password
 </a>
 <div style="margin-top: 20px">
-  <strong style="font-size: 50px"> Wellcome to khoi.com </strong>
+  <strong style="font-size: 50px"> Wellcome to Vicodin </strong>
 </div>
 `;
