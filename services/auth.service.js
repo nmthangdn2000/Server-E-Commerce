@@ -107,7 +107,7 @@ const htmlVerifyEmail = (name, email, token) => `
     display: inline-block;
     font-size: 16px;
     border-radius: 50px;
-  " href="http://localhost:3000/verify-email">
+  " href="http://localhost:3000/login">
   Verify email
 </a>
 <div style="margin-top: 20px">
